@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:artivatic_task/routes/route_name.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
@@ -14,7 +15,7 @@ class SplashController extends GetxController {
   void splashTimer() {
     Timer(
       const Duration(seconds: 3),
-      () {},
+      () => Get.offAndToNamed(dashboardScreen),
     );
   }
 }

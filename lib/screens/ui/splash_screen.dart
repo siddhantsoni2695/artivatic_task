@@ -1,8 +1,10 @@
 import 'package:artivatic_task/constants/color_constant.dart';
+import 'package:artivatic_task/controllers/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends GetView<SplashController> {
   const SplashScreen({super.key});
 
   @override
