@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import 'bindings/network_binding.dart';
+
 void main() {
   runApp(
     ScreenUtilInit(
@@ -13,6 +15,7 @@ void main() {
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
+          initialBinding: NetworkBinding(),
           initialRoute: splashScreen,
           getPages: appRoutes,
         );

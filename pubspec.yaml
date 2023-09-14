@@ -39,6 +39,8 @@ dependencies:
   get: ^4.6.6
   # for adapting screen and font size
   flutter_screenutil: ^5.9.0
+  # for network connectivity
+  connectivity_plus: ^4.0.2
 
 dev_dependencies:
   flutter_test:

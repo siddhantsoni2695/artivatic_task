@@ -27,23 +27,30 @@ class DashboardScreen extends GetView<DashboardController> {
       body: Obx(
         () => RefreshIndicator(
           onRefresh: controller.onRefresh,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
+          child: Stack(
             children: [
-              controller.isLoadingRefresh.value ? loadingView() : Container(),
-              searchView(),
-              controller.isLoading.value
-                  ? loadingView()
-                  : (controller.listOfRow.length ?? 0) == 0
-                      ? noDataFound()
-                      : Expanded(
-                          child: ListView.builder(
-                            itemCount: controller.listOfRow.length,
-                            itemBuilder: (context, index) {
-                              return listItem(controller.listOfRow[index]);
-                            },
-                          ),
-                        ),
+              Column(
+                children: [
+                  SizedBox(height: 16.h),
+                  checkConnection(),
+                  controller.isLoadingRefresh.value
+                      ? loadingView()
+                      : Container(),
+                  searchView(),
+                  controller.isLoading.value
+                      ? loadingView()
+                      : controller.listOfRow.isEmpty
+                          ? noDataFound()
+                          : Expanded(
+                              child: ListView.builder(
+                                itemCount: controller.listOfRow.length,
+                                itemBuilder: (context, index) {
+                                  return listItem(controller.listOfRow[index]);
+                                },
+                              ),
+                            ),
+                ],
+              ),
             ],
           ),
         ),

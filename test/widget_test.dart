@@ -5,25 +5,21 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:artivatic_task/screens/ui/splash_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:artivatic_task/controllers/dashboard_controller.dart';
+import 'package:artivatic_task/modals/dashboard_data_response.dart';
+import 'package:artivatic_task/providers/dashboard_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const SplashScreen());
+  group('Test Group', () {
+    final controller = DashboardController(provider: DashboardProvider());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    test('Test with data', () {
+      expect(controller.dataResponse.value, isA<DashboardDataResponse>());
+    });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    test('Test with no data', () {
+      expect(controller.listOfRow, []);
+    });
   });
 }

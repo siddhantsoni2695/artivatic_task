@@ -1,15 +1,19 @@
-import 'package:artivatic_task/controllers/dashboard_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../constants/color_constant.dart';
+import '../../utility/network_manager.dart';
 
 // Widget for showing loading
 Widget loadingView() {
   return Padding(
-    padding: EdgeInsets.symmetric(vertical: 16.h,),
+    padding: EdgeInsets.symmetric(
+      vertical: 16.h,
+    ),
     child: Row(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           'Loading data',
@@ -72,3 +76,17 @@ Widget imageView(String imageUrl) {
   );
 }
 
+// Widget for check network connectivity
+Widget checkConnection() {
+  return GetBuilder<GetXNetworkManager>(builder: (builder) {
+    return (Get.find<GetXNetworkManager>().connectionType == 0)
+        ? Text(
+            'No Internet',
+            style: TextStyle(
+              fontSize: 24.sp,
+              color: colorRed,
+            ),
+          )
+        : Container();
+  });
+}

@@ -65,7 +65,10 @@ class DashboardController extends GetxController {
 
     dataResponse.value.rows?.asMap().forEach(
       (key, rowDetails) {
-        if (rowDetails.title?.toLowerCase().contains(searchText.toLowerCase()) ?? false) {
+        if (rowDetails.title
+                ?.toLowerCase()
+                .contains(searchText.toLowerCase()) ??
+            false) {
           listOfRow.add(rowDetails);
         }
       },
